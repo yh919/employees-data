@@ -5,8 +5,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Project Main Objects
 
 ``
-This project shows employees data from [data Array[]}.\
-Hide & Show Data With Button.\
+This project shows employees data from [data Array[]}.
+Hide & Show Data With Button.
 Filter By Name with Clear Filter Input Button
 ``
 
