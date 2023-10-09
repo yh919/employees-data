@@ -1,0 +1,43 @@
+/** @format */
+
+.mb {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.filter {
+  padding: 8px;
+  width: 15rem;
+  border-radius: 8px;
+  border: 1px solid grey;
+  font-weight: bold;
+}
+
+.clearBtn {
+  padding: 8px;
+  background-color: rgb(23, 70, 85);
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+.clearBtn:hover {
+  background-color: rgb(25, 84, 104);
+}
+
+.filterByTitle {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filterCheckBoxs {
+  padding: 10px;
+  font-weight: bold;
+}
