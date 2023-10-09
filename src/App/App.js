@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import styles from './App.module.css';
 import './App.module.css'
-import Card from '../Card/Card';
-import Filter from '../Filter/Filter'
+import Filter from '../Components/Filter/Filter'
+import CardList from '../Components/CardList/CardList';
 
 function App() {
 
@@ -10,46 +10,67 @@ function App() {
   const [filter , setFilter] = useState('');
   const [data, setData] = useState([
     {
+      id : 1, 
       name: "Ahmed",
       age: 21,
       title: "Front-End",
-      salary : 8500,
+      salary: 8500,
+      skills: ["HTML","CSS","JS"],
       type: "male"
     },
     {
+      id : 2,
       name: "Mohamed",
       age: 23,
       title: "Back-End",
-      salary : 7000,
+      salary: 7000,
+      skills: ["HTML","CSS","PHP"],
       type: "male"
     },
     {
+      id : 3,
       name: "Esraa",
-      age: 21,
-      title: "Ui Designer",
-      salary : 6000,
+      age: 24,
+      title: "UI Designer",
+      salary: 6000,
+      skills: ["HTML","CSS","Graphic Design"],
       type: "female"
     },
     {
+      id: 4,
       name: "Mena",
-      age: 21,
+      age: 23,
       title: "Full Stack",
-      salary : 10000,
+      salary: 10000,
+      skills: ["HTML","CSS","JS","PHP"],
       type: "female"
     },
     {
+      id: 5,
       name: "Sarah",
-      age: 21,
+      age: 26,
       title: "Project Manager",
-      salary : 9000,
+      salary: 9000,
+      skills: ["HTML","CSS","JS","PHP","UML","Agile"],
       type: "female"
+    },
+    {
+      id: 6,
+      name: "John",
+      age: 35,
+      title: "CTO",
+      salary: 25000,
+      skills: ["HTML","CSS","JS","PHP","UML","Agile ","Leadership"],
+      type: "male"
     },
   ]
   )
 
-  const deleteHandler =  (e , clickedIndex) => {
+  
+
+  const deleteHandler =  (e , selectedID) => {
     setData((prevState) => {
-      return prevState.filter((e,i) => i !== clickedIndex)
+      return prevState.filter((e) => e.id !== selectedID)
     });
   }
 
@@ -85,7 +106,7 @@ function App() {
         className={(cardToggle) ? styles.show : styles.hide}>
         <Filter
           filteration={filterNames} listName={data} />
-        <Card
+        <CardList
           listName={namesHandler()}
           deleteFunc={deleteHandler} />
       </div>
