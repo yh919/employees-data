@@ -3,11 +3,13 @@ import styles from './App.module.css';
 import './App.module.css'
 import Filter from '../Components/Filter/Filter'
 import CardList from '../Components/CardList/CardList';
+import Modal from '../Components/Modal/Modal'
 
 function App() {
 
   const [cardToggle, setCardToggle] = useState(true);
-  const [filter , setFilter] = useState('');
+  const [filter, setFilter] = useState('');
+  const [showModal , setShowModal] = useState(false);
   const [data, setData] = useState([
     {
       id : 1, 
@@ -96,13 +98,20 @@ function App() {
 
   return (
     <div className={styles.mainContainer}>
+      <Modal show={showModal} close={() => setShowModal(false)} />
       <h1>Employees Data</h1>
+      <div className={styles.buttonContainer}>
       <button
         className={styles.toggleButton}
         onClick={() => toggleHandler()}
       >
         {cardToggle ? "Hide Names" : "Show Names"}</button>
-      <div
+      <button
+          className={styles.newRecord}
+          onClick={() => setShowModal(true)}
+      > New Record </button>
+      </div>
+        <div
         className={(cardToggle) ? styles.show : styles.hide}>
         <Filter
           filteration={filterNames} listName={data} />
