@@ -5,11 +5,13 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
+  align-items: center;
 }
 
 .filter {
   padding: 8px;
   width: 15rem;
+  height: 1.5rem;
   border-radius: 8px;
   border: 1px solid grey;
   font-weight: bold;

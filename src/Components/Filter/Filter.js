@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import styles from './Filter.module.css'
+import Button from "../Layout/Button";
 
 const Filter = ({ filteration }) => {
     const [filter, setFilter] = useState('');
@@ -26,7 +27,7 @@ const Filter = ({ filteration }) => {
                     placeholder='filter by names'
                     value={filter}
                     onChange={filterHandler} />
-                <button className={styles.clearBtn} onClick={(e) => clearHandler(e)}> Clear </button>
+                <Button className={styles.clearBtn} onClick={(e) => clearHandler(e)}> Clear </Button>
             </div>
 
         </>

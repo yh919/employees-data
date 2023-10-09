@@ -4,6 +4,8 @@ import './App.module.css'
 import Filter from '../Components/Filter/Filter'
 import CardList from '../Components/CardList/CardList';
 import Modal from '../Components/Modal/Modal'
+import Button from '../Components/Layout/Button';
+import AddUser from '../Components/AddUser/AddUser';
 
 function App() {
 
@@ -16,8 +18,6 @@ function App() {
       name: "Ahmed",
       age: 21,
       title: "Front-End",
-      salary: 8500,
-      skills: ["HTML","CSS","JS"],
       type: "male"
     },
     {
@@ -25,8 +25,6 @@ function App() {
       name: "Mohamed",
       age: 23,
       title: "Back-End",
-      salary: 7000,
-      skills: ["HTML","CSS","PHP"],
       type: "male"
     },
     {
@@ -34,8 +32,6 @@ function App() {
       name: "Esraa",
       age: 24,
       title: "UI Designer",
-      salary: 6000,
-      skills: ["HTML","CSS","Graphic Design"],
       type: "female"
     },
     {
@@ -43,8 +39,6 @@ function App() {
       name: "Mena",
       age: 23,
       title: "Full Stack",
-      salary: 10000,
-      skills: ["HTML","CSS","JS","PHP"],
       type: "female"
     },
     {
@@ -52,8 +46,6 @@ function App() {
       name: "Sarah",
       age: 26,
       title: "Project Manager",
-      salary: 9000,
-      skills: ["HTML","CSS","JS","PHP","UML","Agile"],
       type: "female"
     },
     {
@@ -62,7 +54,6 @@ function App() {
       age: 35,
       title: "CTO",
       salary: 25000,
-      skills: ["HTML","CSS","JS","PHP","UML","Agile ","Leadership"],
       type: "male"
     },
   ]
@@ -97,19 +88,16 @@ function App() {
   }
 
   return (
+    <>
     <div className={styles.mainContainer}>
-      <Modal show={showModal} close={() => setShowModal(false)} />
       <h1>Employees Data</h1>
       <div className={styles.buttonContainer}>
-      <button
-        className={styles.toggleButton}
-        onClick={() => toggleHandler()}
-      >
-        {cardToggle ? "Hide Names" : "Show Names"}</button>
-      <button
-          className={styles.newRecord}
-          onClick={() => setShowModal(true)}
-      > New Record </button>
+        <Button onClick={() => toggleHandler()}>
+          {cardToggle ? "Hide Names" : "Show Names"}
+      </Button>
+        <Button onClick={() => setShowModal(true)}>
+          New Record
+        </Button>
       </div>
         <div
         className={(cardToggle) ? styles.show : styles.hide}>
@@ -120,6 +108,8 @@ function App() {
           deleteFunc={deleteHandler} />
       </div>
       </div>
+    <Modal show={showModal} close={() => setShowModal(false)}> <AddUser /> </Modal>      
+    </>
   );
 }
 

@@ -1,25 +1,32 @@
 import React, { Fragment } from "react";
 import styles from './Modal.module.css'
 import ReactDOM from 'react-dom';
+import DeleteButton from "../Layout/DeleteButton";
 
-const BackDrop = ({close}) => {
-    return <div className={styles.backDrop} onClick={close}></div>
+
+
+
+
+const BackDrop = ({close , show}) => {
+    return <div className={`${styles.backDrop} ${show ? styles.showBackDrop : null}`} onClick={close}></div>
 }
 
-const Overlay = () => {
-    return <div className={styles.overlay}></div>
+const Overlay = ({close , show , children}) => {
+    return <div className={`${styles.overlay} ${show ? styles.showOverlay : null}`}>
+        <DeleteButton onClick={close} />
+        {children}
+    </div>
 
 }
 
-const Modal = ({ show , close}) => {
+const Modal = ({ children, show , close}) => {
     
     return (
-    show &&
         <Fragment>
             
             {ReactDOM.createPortal(<>
-                    <BackDrop close={close} />
-                <Overlay /></>
+                    <BackDrop close={close} show={show} />
+                <Overlay close={close} show={show}> {children} </Overlay></>
                 , document.getElementById('modal')
                 )
             }
