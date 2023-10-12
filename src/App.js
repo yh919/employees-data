@@ -1,18 +1,14 @@
 // import "./styles.css";
 import React, { useEffect, useState , useRef } from "react";
 import axios from "axios";
+import usePrevState from "./Hooks/usePrevState";
 
 
 export default function App() {
   const [term, setTerm] = useState("ReactJS");
   const [result, setResult] = useState([]);
-  const termRef = useRef('')
+  const prevTerm = usePrevState(term);
 
-  useEffect(() => {
-    termRef.current = term;
-  })
-
-  const prevTerm = termRef.current
 
   useEffect(() => {
     const search = async () => {
