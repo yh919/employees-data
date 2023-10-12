@@ -2,14 +2,6 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Project Main Objects
-
-
-This project shows employees data from [data Array[]}.                                                                                                                                                              
-Hide & Show Data With Button.                                                                                                                                                                                       
-Filter By Name with Clear Filter Input Button
-
-
 ## Available Scripts
 
 In the project directory, you can run:
