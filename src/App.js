@@ -1,40 +1,18 @@
 // import "./styles.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef } from "react";
 import axios from "axios";
 
 
 export default function App() {
   const [term, setTerm] = useState("ReactJS");
-  const [debounceSearch , setDebounceSearch] = useState(term);
   const [result, setResult] = useState([]);
+  const termRef = useRef('')
 
   useEffect(() => {
-    const timeOut = setTimeout(() => {
-      setDebounceSearch(term)
-    }, 1200)
-    
-    return () => {
-      clearTimeout(timeOut);
-    }
-  }, [term])
+    termRef.current = term;
+  })
 
-  useEffect(() => {
-    const search = async () => {
-      const respond = await axios.get('https://en.wikipedia.org/w/api.php', {
-        params: {
-          action: 'query',
-          list: 'search',
-          origin: '*',
-          format: 'json',
-          srsearch: debounceSearch,
-        },
-      });
-      setResult(respond.data.query.search);
-    };
-   
-    search()
-
-  }, [debounceSearch])
+  const prevTerm = termRef.current
 
   useEffect(() => {
     const search = async () => {
@@ -54,8 +32,8 @@ export default function App() {
       if (term) {
         search();
       } 
-    } else {
-      const timeout = setTimeout(() => {
+    } else if (prevTerm !== term) {
+      const debounceSearch = setTimeout(() => {
         if (term) {
           search();
         } 
@@ -64,10 +42,11 @@ export default function App() {
    
       return () => {
      
-        clearTimeout(timeout);
+        clearTimeout(debounceSearch);
       }
     }
-  }, [result.length, term]);
+  }, [prevTerm, result.length, term]);
+
   
   const fetchResult = result.map((e) => {
     return (
